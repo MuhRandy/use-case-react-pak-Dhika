@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handlePlus = () => {
-    count < 10 ? setCount(count + 1) : setCount("Done !");
+    count < 9 ? setCount(count + 1) : setCount("Done !");
   };
 
   const handleMinus = () => {
@@ -20,9 +20,19 @@ function App() {
   return (
     <>
       <div className="App">
-        <Button handler={handleMinus}>-</Button>
+        <Button
+          handler={handleMinus}
+          disabled={count == "Done !" ? true : false}
+        >
+          -
+        </Button>
         <h1>{count}</h1>
-        <Button handler={handlePlus}>+</Button>
+        <Button
+          handler={handlePlus}
+          disabled={count == "Done !" ? true : false}
+        >
+          +
+        </Button>
       </div>
       <Button handler={handleReset} disabled={count == "Done !" ? false : true}>
         Reset
